@@ -1,4 +1,3 @@
-# Import cryptography library
 from cryptography.fernet import Fernet
 
 from app.key_utils import key32, key64

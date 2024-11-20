@@ -1,6 +1,7 @@
 import binascii
 import unittest
-# Import cryptography library
+# import cryptography library
+from cryptography.fernet import InvalidToken
 from app.decrypt import Decryptor
 
 
@@ -30,8 +31,7 @@ class TestDecryption(unittest.TestCase):
         try:
             decrypted_data = dec.decrypt(self.encoded_data)
             self.assertIsInstance(decrypted_data, bytes)
-        # except (TypeError, InvalidToken):
-        except TypeError:
+        except (TypeError, InvalidToken):
             self.assertFalse(True)
 
     def test_decrypt_adapter_expected_bytes(self):

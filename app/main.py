@@ -47,7 +47,7 @@ def main():
     # print("")
     # print("dencrypt2: ", decrypted_file)
 
-    # Write bytes to a new file  # not necessary
+    # Write bytes to a new file 
     with open("../data/new_image.png", "wb") as new_file:
         new_file.write(decrypted_file)
 

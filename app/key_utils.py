@@ -23,4 +23,5 @@ def key64(key: str) -> bytes:
     :param key: Key to encode into Base-64
     :return: Key encoded in Base-64
     """
+
     return base64.urlsafe_b64encode(key.encode())

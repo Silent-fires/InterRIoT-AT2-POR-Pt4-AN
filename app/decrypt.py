@@ -1,4 +1,4 @@
-from cryptography.fernet import Fernet
+from cryptography.fernet import Fernet, InvalidToken
 
 from app.key_utils import key32, key64
 
@@ -21,8 +21,11 @@ class Decryptor:
         :param data: Data to be decrypted
         :return: Decrypted data
         """
-        decrypted_data = self.key.decrypt(data)
-        return decrypted_data
+        try:
+            decrypted_data = self.key.decrypt(data)
+            return decrypted_data
+        except InvalidToken:
+            raise InvalidToken("File is not encrypted, or is not encrypted using this key!")
         # raise NotImplementedError()
 
     def decrypt(self, data) -> bytes:
